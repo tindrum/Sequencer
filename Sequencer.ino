@@ -56,6 +56,11 @@ void nextNote(int *note) {
   
 }
 
+void meterDisplay(int displayValue) {
+  int adjustedValue = displayValue / 4;
+  analogWrite(meter, adjustedValue);
+}
+
 void loop() {
   // main event loop.
   buttonDown = digitalRead(button);
@@ -71,7 +76,7 @@ void loop() {
 
   slideValue = analogRead(slider);
 
-  analogWrite(meter, slideValue);
+  meterDisplay(slideValue);
   
   Serial.println("Slider value is:");
   Serial.println(slideValue);
